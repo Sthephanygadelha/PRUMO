@@ -1,0 +1,12 @@
+{
+  "name": "prumo-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "API do Prumo (Node.js, sem dependências externas)",
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "start": "node --no-warnings src/server.js",
+    "dev": "node --no-warnings --watch src/server.js",
+    "test": "node --no-warnings --test test/*.test.js"
+  }
+}

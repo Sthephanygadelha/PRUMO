@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prumo — Orientação tributária e econômica</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="row"><button id="bVolta" hidden>← Voltar</button><span class="logo" style="cursor:pointer" role="button" tabindex="0">Prumo</span></div>
+  <div class="row">
+    <button id="bPlanos">Planos</button>
+    <button id="bAcess" aria-label="Acessibilidade">Aa Acessibilidade</button>
+    <button id="bSair" hidden>Sair</button>
+  </div>
+</header>
+<main>
+
+<section id="acess" class="card" hidden>
+  <h2>Acessibilidade</h2>
+  <div class="row"><button id="fMenos">A−</button><button id="fMais">A+</button><button id="fReset">Padrão</button>
+  <button id="hc">Alto contraste</button><button id="tema">Tema claro/escuro</button></div>
+  <p class="mut">Suas escolhas ficam salvas neste aparelho.</p>
+</section>
+
+<section id="landing" class="screen">
+ <div class="card"><h1>Entenda os impostos e as finanças do seu negócio sem pagar caro</h1>
+ <p>Cursos, mentores e IA para MEIs, pequenos comércios e quem está começando.</p>
+ <div class="row"><button class="p" onclick="go('cadastro')">Criar conta grátis</button><button onclick="go('login')">Já tenho conta</button></div></div>
+ <div class="grid">
+  <div class="card"><b>Aprenda</b><p class="mut">Videoaulas, memorandos e testes por tema.</p></div>
+  <div class="card"><b>Fale com mentores</b><p class="mut">Chat, vídeo e agendamento com profissionais.</p></div>
+  <div class="card"><b>Tire dúvidas com IA</b><p class="mut">Respostas rápidas, com mentores quando precisar.</p></div>
+ </div>
+ <h2>Planos</h2><div class="grid" id="gPlanos2"></div>
+ <h2>Depoimentos</h2><p class="mut">Exemplos fictícios do protótipo.</p>
+ <div class="grid">
+  <div class="card">"Finalmente entendi a guia do MEI sem precisar pagar consultoria."<p class="mut">— Dona de brechó (exemplo)</p></div>
+  <div class="card">"O simulador me mostrou a hora certa de abrir meu CNPJ."<p class="mut">— Vendedor ambulante (exemplo)</p></div>
+  <div class="card">"A mentoria me ajudou a escolher o regime da minha startup."<p class="mut">— Fundadora (exemplo)</p></div>
+ </div>
+</section>
+
+<section id="cadastro" class="screen" hidden><div class="card"><h2>Criar conta</h2>
+ <div class="row"><button id="cP" class="on">Pessoa</button><button id="cE">Empresa</button></div>
+ <label id="cNL" for="cN">Nome completo</label><input id="cN">
+ <label id="cDL" for="cD">CPF</label><input id="cD" inputmode="numeric">
+ <label for="cM">E-mail</label><input id="cM" type="email">
+ <label for="cS">Senha (mínimo 8 caracteres)</label><input id="cS" type="password" autocomplete="new-password">
+ <label style="font-weight:400"><input type="checkbox" id="cTermos" style="width:auto"> Li e aceito os Termos de Uso e a Política de Privacidade</label>
+ <p id="cErr" class="err" role="alert"></p>
+ <div class="row"><button class="p" id="cOk">Criar conta</button><button id="cGov">Continuar com gov.br (simulado)</button></div>
+ <p class="mut">Para empresas pedimos apenas dados de verificação (CNPJ e nome). O back end consultará a base oficial.</p></div></section>
+
+<section id="pag" class="screen" hidden><div class="card"><h2 id="pT">Pagamento</h2>
+ <div class="row"><button id="pPix" class="on">Pix</button><button id="pCar">Cartão</button></div>
+ <div id="pixB"><p>Escaneie o QR code ou copie o código (simulado):</p>
+  <div style="width:140px;height:140px;border:2px dashed var(--bd);display:grid;place-items:center;margin-bottom:.5rem">QR</div>
+  <input readonly value="00020126-EXEMPLO-PIX-PROTOTIPO"></div>
+ <div id="carB" hidden>
+  <label for="kN">Nome no cartão</label><input id="kN" autocomplete="off">
+  <label for="kC">Número</label><input id="kC" inputmode="numeric" autocomplete="off" placeholder="0000 0000 0000 0000">
+  <div class="row"><div style="flex:1"><label for="kV">Validade</label><input id="kV" placeholder="MM/AA" autocomplete="off"></div>
+  <div style="flex:1"><label for="kS">CVV</label><input id="kS" autocomplete="off"></div></div></div>
+ <p><button class="p" id="pPay">Confirmar pagamento</button></p><p id="pOk" role="alert"></p><p><button id="pGo" hidden>Continuar</button></p>
+ <p class="mut">Protótipo: não digite dados reais. O pagamento será feito por um gateway no back end.</p></div></section>
+
+<section id="prev" class="screen" hidden><h2>Como fica cada plano</h2><div class="row" id="pvT" style="margin-bottom:.8rem"></div><div id="pvB"></div></section>
+
+<section id="aula" class="screen" hidden><div class="card"><h2 id="aT"></h2><p class="mut" id="aP"></p>
+ <div id="vid" style="aspect-ratio:16/9;background:#000;color:#fff;display:grid;place-items:center;border-radius:10px;cursor:pointer;text-align:center;padding:1rem">▶ Reproduzir</div>
+ <div class="row" style="margin:.6rem 0"><button data-a="aulas" class="on">Aulas</button><button data-a="mat">Materiais</button><button data-a="chat">Chat da turma</button></div>
+ <div id="aBody"></div></div></section>
+
+<section id="agenda" class="screen" hidden><div class="card"><h2>Agendar consulta</h2><p id="gP" class="mut"></p>
+ <label>Dia</label><div class="row" id="gD"></div><label>Horário</label><div class="row" id="gH"></div>
+ <label for="gA">Assunto</label><textarea id="gA" rows="2" placeholder="Sobre o que quer conversar?"></textarea>
+ <p><button class="p" id="gOk">Confirmar agendamento</button></p><p id="gM" role="alert"></p></div></section>
+
+<section id="call" class="screen" hidden><div class="card"><h2 id="cT">Chamada</h2>
+ <div class="grid"><div style="aspect-ratio:16/9;background:#1d2b38;color:#fff;border-radius:10px;display:grid;place-items:center"><span id="tp"></span></div>
+ <div id="tYou" style="aspect-ratio:16/9;background:#26405a;color:#fff;border-radius:10px;display:grid;place-items:center">Você</div></div>
+ <div class="row" style="margin-top:.6rem"><button id="cMic"></button><button id="cCam"></button><button class="p" id="cEnd">Encerrar</button></div></div></section>
+
+<section id="login" class="screen" hidden>
+  <div class="card">
+    <h1>Orientação tributária e econômica que cabe no seu bolso</h1>
+    <p class="mut">Cursos, mentores e IA para MEIs, pequenos comércios e novos negócios.</p>
+    <div class="row"><button id="mCpf" class="on">CPF</button><button id="mCnpj">CNPJ</button></div>
+    <label for="doc" id="docL">CPF</label><input id="doc" inputmode="numeric" placeholder="000.000.000-00">
+    <label for="pw">Senha</label><input id="pw" type="password" placeholder="Sua senha">
+    <p id="lerr" class="err" role="alert"></p>
+    <div class="row"><button class="p" id="entrar">Entrar</button><button id="gov">Entrar com gov.br (simulado)</button></div>
+    <p class="mut">Protótipo: a autenticação real será conectada ao back end e ao gov.br.</p>
+  </div>
+</section>
+
+<section id="planos" class="screen" hidden>
+  <h2>Planos</h2><p class="mut">Valores de exemplo, a definir.</p>
+  <div class="grid" id="gPlanos"></div>
+</section>
+
+<section id="app" class="screen" hidden>
+  <div id="planB" class="card"></div><div id="pfBanner" class="card" hidden><b>Modo pessoa física.</b> Apoio econômico e tributário para CPF, mentoria com preço reduzido e ajuda para abrir CNPJ quando fizer sentido.</div>
+  <div class="tabs" role="tablist">
+    <button class="on" data-t="cursos">Cursos</button><button data-t="assess">Assessorias</button><button data-t="ia">Assistente IA</button><button data-t="news">Notícias</button><button data-t="sim">Simulador CNPJ</button>
+  </div>
+
+  <div id="t-cursos" class="tab">
+    <div class="grid" id="gCursos"></div>
+    <div id="cDet" class="card" hidden></div>
+  </div>
+
+  <div id="t-assess" class="tab" hidden>
+    <div class="grid" id="gPros"></div>
+    <div id="pDet" class="card" hidden></div>
+  </div>
+
+  <div id="t-ia" class="tab" hidden>
+    <div class="card">
+      <div class="row" id="chips"></div>
+      <div class="chat" id="iaLog" aria-live="polite"><div class="m bot">Olá! Sou a IA do Prumo. Pergunte sobre MEI, impostos ou regimes. Orientação educacional: não substitui um contador.</div></div>
+      <div class="row"><input id="iaIn" placeholder="Digite sua dúvida" style="flex:1"><button class="p" id="iaGo">Enviar</button></div>
+      <p class="mut" id="quota"></p>
+    </div>
+  </div>
+  <div id="t-news" class="tab" hidden>
+   <div class="card"><b>Resumo da IA: impacto geral</b><p id="nSum"></p><p class="mut" id="nFreq"></p></div>
+   <div class="row" id="nF" style="margin-bottom:.8rem"></div><div id="nL"></div>
+   <p class="mut">Itens de exemplo. No produto, o back end coletará notícias de jornais e blogs reconhecidos, com foco no Brasil e em fatos internacionais que o afetem, e a IA resumirá o impacto.</p></div>
+  <div id="t-sim" class="tab" hidden><div class="card"><h3>Devo abrir CNPJ?</h3>
+   <label for="sF">Faturamento mensal médio (R$)</label><input id="sF" type="number" min="0" inputmode="numeric">
+   <label for="sN">Precisa emitir nota fiscal?</label><select id="sN"><option value="0">Não</option><option value="1">Sim</option></select>
+   <label for="sE">Vende para empresas ou governo?</label><select id="sE"><option value="0">Não</option><option value="1">Sim</option></select>
+   <label for="sW">Funcionários</label><select id="sW"><option value="0">Nenhum</option><option value="1">1</option><option value="2">2 ou mais</option></select>
+   <p><button class="p" id="sGo">Simular</button></p><div id="sR" aria-live="polite"></div></div></div>
+</section>
+</main>
+
+<script src="script.js"></script>
+<script src="api.js"></script>
+<script src="integracao.js"></script>
+</body>
+</html>
