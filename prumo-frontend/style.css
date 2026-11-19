@@ -24,3 +24,4 @@ label{display:block;margin:.6rem 0 .2rem;font-weight:600}
 .price{font-size:1.6rem;font-weight:800}.tag{background:var(--acc);padding:.1rem .5rem;border-radius:99px;font-size:.8rem}
 .bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri)}
 [hidden]{display:none!important}
+ol{padding-left:1.2rem;margin:.4rem 0}.tag{display:inline-block}
