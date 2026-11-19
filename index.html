@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prumo — Hub de serviços fiscais, tributários e econômicos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="row"><button id="bVolta" hidden>← Voltar</button><span class="logo" style="cursor:pointer" role="button" tabindex="0">Prumo</span></div>
+  <div class="row">
+    <button id="bCat">Catálogo</button><button id="bAnun">Anunciar</button><button id="bEnt">Entrar</button><button id="bSair" hidden>Sair</button>
+    <button id="bAcess" aria-label="Acessibilidade">Aa Acessibilidade</button>
+  </div>
+</header>
+<main>
+
+<section id="acess" class="card" hidden>
+  <h2>Acessibilidade</h2>
+  <div class="row"><button id="fMenos">A−</button><button id="fMais">A+</button><button id="fReset">Padrão</button>
+  <button id="hc">Alto contraste</button><button id="tema">Tema claro/escuro</button></div>
+  <p class="mut">Suas escolhas ficam salvas neste aparelho.</p>
+</section>
+
+<section id="landing" class="screen">
+  <div class="card"><h1>Encontre quem resolve o fiscal, o tributário e o econômico da sua empresa</h1>
+  <p>O Prumo conecta startups e empresas emergentes a prestadoras de serviços especializadas e dá visibilidade a quem presta esses serviços.</p>
+  <div class="row"><button class="p" onclick="go('catalogo')">Quero contratar serviços</button><button onclick="go('anunciar')">Quero anunciar minha empresa</button></div></div>
+  <h2>Três áreas</h2><div class="grid" id="gAreas"></div>
+  <h2>Como funciona</h2>
+  <div class="grid">
+    <div class="card"><b>Para startups e gestores</b><ol><li>Escolha a área e se quer um serviço avulso ou um pacote.</li><li>Compare as prestadoras no catálogo.</li><li>Peça contato e combine direto com a prestadora.</li></ol></div>
+    <div class="card"><b>Para prestadoras</b><ol><li>Crie o perfil da sua empresa.</li><li>Cadastre serviços avulsos e pacotes.</li><li>Receba pedidos de contato de novos clientes.</li></ol></div>
+  </div>
+  <h2>Planos de divulgação para prestadoras</h2><p class="mut">Valores de exemplo, a definir.</p>
+  <div class="grid" id="gPl"></div>
+</section>
+
+<section id="catalogo" class="screen" hidden>
+  <h2>Catálogo de prestadoras</h2>
+  <label>Área</label><div class="row" id="fA"></div>
+  <label>Tipo de serviço</label><div class="row" id="fT"></div>
+  <p class="mut" id="cN"></p><div class="grid" id="gC"></div>
+</section>
+
+<section id="perfil" class="screen" hidden>
+  <div class="card" id="pf"></div>
+  <div class="card"><h3>Solicitar contato</h3><p class="mut" id="pfS"></p>
+    <label for="qN">Seu nome</label><input id="qN">
+    <label for="qE">Empresa (ou "gestor autônomo")</label><input id="qE">
+    <label for="qM">E-mail</label><input id="qM" type="email">
+    <label for="qT">Mensagem</label><textarea id="qT" rows="3"></textarea>
+    <p id="qErr" class="err" role="alert"></p><button class="p" id="qOk">Enviar pedido</button><p id="qMsg" role="alert"></p>
+  </div>
+</section>
+
+<section id="anunciar" class="screen" hidden><div class="card"><h2>Anuncie sua empresa no Prumo</h2>
+  <label for="aN">Nome da empresa</label><input id="aN">
+  <label for="aC">CNPJ</label><input id="aC" inputmode="numeric" placeholder="Somente números">
+  <label for="aM">E-mail de contato</label><input id="aM" type="email">
+  <label>Áreas de atuação</label><div class="row" id="aA"></div>
+  <label for="aD">Descrição</label><textarea id="aD" rows="2"></textarea>
+  <label for="aS">Primeiro serviço</label><input id="aS" placeholder="Ex.: Planejamento tributário">
+  <label>Tipo do serviço</label><div class="row" id="aT"></div>
+  <label for="aP">Valor a partir de (R$)</label><input id="aP" type="number" min="0">
+  <p id="aErr" class="err" role="alert"></p><button class="p" id="aOk">Publicar perfil</button>
+  <p class="mut">Para empresas pedimos apenas dados de verificação (CNPJ e nome). O back end consultará a base oficial.</p></div></section>
+
+<section id="painel" class="screen" hidden>
+  <div class="card" id="pnl"></div><h3>Pedidos de contato recebidos</h3><div id="pnlL"></div>
+  <p><button id="pnlSim">Simular um pedido de cliente</button></p>
+</section>
+
+<section id="login" class="screen" hidden><div class="card"><h2>Entrar</h2>
+  <div class="row"><button id="rC" class="on">Sou cliente</button><button id="rP">Sou prestadora</button></div>
+  <label for="doc">CPF ou CNPJ</label><input id="doc" inputmode="numeric" placeholder="Somente números">
+  <label for="pw">Senha</label><input id="pw" type="password">
+  <p id="lerr" class="err" role="alert"></p>
+  <div class="row"><button class="p" id="entrar">Entrar</button><button id="gov">Entrar com gov.br (simulado)</button></div>
+  <p class="mut">Protótipo: a autenticação real será conectada ao back end e ao gov.br.</p></div></section>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>
